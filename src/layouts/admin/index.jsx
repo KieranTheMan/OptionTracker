@@ -4,9 +4,9 @@ import Navbar from "components/navbar";
 import Sidebar from "components/sidebar";
 import Footer from "components/footer/Footer";
 import routes from "routes";
+import Dashboard from "../../views/admin/default";
 
-export default function Admin(props) {
-  const { ...rest } = props;
+export default function Admin({ openModal, ...rest }) {
   const location = useLocation();
   const [open, setOpen] = React.useState(true);
   const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
@@ -59,7 +59,8 @@ export default function Admin(props) {
   document.documentElement.dir = "ltr";
   return (
     <div className="flex h-full w-full">
-      <Sidebar open={open} onClose={() => setOpen(false)} />
+      <Sidebar open={open} onClose={() => setOpen(false)} openModal={openModal} />
+        
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}
